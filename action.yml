@@ -8,13 +8,13 @@ runs:
       - name: Checkout main repository
         uses: actions/checkout@v4
       - name: Create symbolic link for requirements.txt
-      run: ln -s ${{ github.action_path }}/requirements.txt
-      shell: bash
+        run: ln -s ${{ github.action_path }}/requirements.txt
+        shell: bash
 
     # Step 2: Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
+     - name: Set up Python
+       uses: actions/setup-python@v5
+       with:
         python-version: '3.10'
         cache: pip
         # Reference the requirements.txt file from the composite action repository
