@@ -1,13 +1,15 @@
 name: 'Validate Action'
+description: 'Composite action to install Python dependencies'
+
 runs:
   using: composite
   steps:
-    # Step 1: Check files in the action repository
+    # Step 1: List files to debug
     - name: List files in the composite action directory
       run: |
         echo "Listing files in the composite action directory:"
         ls -la ${{ github.action_path }}
-      shell: pwsh  # Specify shell for this step
+      shell: bash
 
     # Step 2: Set up Python
     - name: Set up Python
@@ -15,12 +17,14 @@ runs:
       with:
         python-version: '3.10'
         cache: pip
+        # Reference the requirements.txt file from the composite action repository
         cache-dependency-path: ${{ github.action_path }}/requirements.txt
-      
+
     # Step 3: Install Dependencies
     - name: Install Dependencies
       run: pip install -r ${{ github.action_path }}/requirements.txt
-      shell: pwsh  # Specify shell for this step
+      shell: bash
+
 
     - name: Run Compstate Validation
       shell: bash
