@@ -25,5 +25,5 @@ runs:
     - name: Run Compstate Validation
       shell: bash
       run: ${{ github.action_path }}/requirements.txt .
-      shell: pwsh  # Specify shell for this step
+      
 
