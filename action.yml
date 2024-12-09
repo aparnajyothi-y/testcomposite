@@ -4,11 +4,8 @@ description: 'Composite action to install Python dependencies'
 runs:
   using: composite
   steps:
-    # Step 1: List files to debug
-    - name: List files in the composite action directory
-      run: |
-        echo "Listing files in the composite action directory:"
-        ls -la ${{ github.action_path }}
+      - name: Create symbolic link for requirements.txt
+      run: ln -s ${{ github.action_path }}/requirements.txt
       shell: bash
 
     # Step 2: Set up Python
