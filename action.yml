@@ -4,6 +4,9 @@ description: 'Composite action to install Python dependencies'
 runs:
   using: composite
   steps:
+
+      - name: Checkout main repository
+        uses: actions/checkout@v4
       - name: Create symbolic link for requirements.txt
       run: ln -s ${{ github.action_path }}/requirements.txt
       shell: bash
