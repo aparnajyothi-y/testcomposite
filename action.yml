@@ -20,11 +20,10 @@ runs:
     # Step 3: Install Dependencies
     - name: Install Dependencies
       run: pip install -r ${{ github.action_path }}/requirements.txt
-      shell: bash
+     
 
 
     - name: Run Compstate Validation
-      shell: bash
       run: ${{ github.action_path }}/requirements.txt .
       
 
