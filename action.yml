@@ -8,24 +8,27 @@ runs:
     # Step 1: Checkout main repository
     - name: Checkout main repository
       uses: actions/checkout@v4
-
+     # Step 2: Create symbolic link for requirements.txt
+    - name: Create symbolic link for requirements.txt
+      run: ln -s ${{ github.action_path }}/requirements.txt
+      shell: bash
   
 
-    # Step 3: Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-        cache: pip
-        # Reference the requirements.txt file from the composite action repository
-        cache-dependency-path: requirements.txt
-
-    # Step 4: Install Dependencies
-    - name: Install Dependencies
-      run: pip install -r requirements.txt
-      shell: bash
-
-    # Step 5: Run Composite Validation (if needed)
-    - name: Run Composite Validation
-      run: echo "Validation completed"
-      shell: bash
+      # Step 3: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: pip
+          # Reference the requirements.txt file from the composite action repository
+          cache-dependency-path: requirements.txt
+  
+      # Step 4: Install Dependencies
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+        shell: bash
+  
+      # Step 5: Run Composite Validation (if needed)
+      - name: Run Composite Validation
+        run: echo "Validation completed"
+        shell: bash
