@@ -9,7 +9,7 @@ runs:
       run: |
         echo "Listing files in the composite action directory:"
         ls -la ${{ github.action_path }}
-      shell: bash  # Specify shell for this step
+      
 
     # Step 2: Set up Python
     - name: Set up Python
