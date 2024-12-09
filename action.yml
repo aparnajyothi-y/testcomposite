@@ -9,10 +9,7 @@ runs:
     - name: Checkout main repository
       uses: actions/checkout@v4
 
-    # Step 2: Create symbolic link for requirements.txt
-    - name: Create symbolic link for requirements.txt
-      run: ln -s ${{ github.action_path }}/requirements.txt
-      shell: bash
+  
 
     # Step 3: Set up Python
     - name: Set up Python
